@@ -2,7 +2,7 @@ import MapView, { PROVIDER_GOOGLE, Marker, Callout } from 'react-native-maps';
 import { Feather } from '@expo/vector-icons/';
 import React, { useCallback, useEffect, useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import { useFocusEffect, useNavigation } from '@react-navigation/native';
 
 import mapMarker from '../../images/map-marker.png';
 
@@ -22,6 +22,7 @@ const OrphanagesMap: React.FC = () => {
 
   const [orphanages, setOrphanages] = useState<IOrphanage[]>([]);
 
+  // Melhorar com o useFocusEffect, mas veja como faz para nao criar um loop
   useEffect(() => {
     api
       .get('orphanages')
