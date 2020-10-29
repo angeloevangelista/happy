@@ -1,6 +1,6 @@
 import { Router } from 'express';
 
-import orphanagesRouter from './orphanages.routes';
+import orphanagesRouter from '@modules/orphanages/infra/http/routes/orphanages.routes';
 
 const routes = Router();
 

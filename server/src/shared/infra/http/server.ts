@@ -4,9 +4,11 @@ import 'reflect-metadata';
 import express from 'express';
 import 'express-async-errors';
 
-import './database/connection';
+import '@shared/infra/typeorm';
+import '@shared/container';
+
 import routes from './routes';
-import errorHandler from './errors/handler';
+import errorHandler from '@shared/errors/handler';
 
 const app = express();
 

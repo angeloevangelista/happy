@@ -1,10 +1,10 @@
-import Image from '../database/entities/Image';
+import Image from '@modules/orphanages/infra/typeorm/entities/Image';
 
 export default {
   render(image: Image) {
     return {
       id: image.id,
-      url: `http://127.0.0.1:3333/uploads/${image.path}`,
+      url: `${process.env.APP_URL}/uploads/${image.path}`,
     };
   },
 
