@@ -1,7 +1,7 @@
 import Orphanage from '@modules/orphanages/infra/typeorm/entities/Orphanage';
 import ICreateOrphanageDTO from '../dtos/ICreateOrphanageDTO';
 
-interface FindOptions{
+interface IFindOptions {
   relations?: string[];
 }
 
@@ -11,5 +11,5 @@ interface IOrphanagesRepository {
   create(data: ICreateOrphanageDTO): Promise<Orphanage>;
 }
 
-export { FindOptions, IOrphanagesRepository };
+export { IFindOptions, IOrphanagesRepository };
 export default IOrphanagesRepository;

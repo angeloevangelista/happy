@@ -1,12 +1,19 @@
 import { inject, injectable } from 'tsyringe';
 import * as Yup from 'yup';
 
-import Image from '@modules/orphanages/infra/typeorm/entities/Image';
 import Orphanage from '@modules/orphanages/infra/typeorm/entities/Orphanage';
 import IOrphanagesRepository from '../repositories/IOrphanagesRepository';
-import ICreateOrphanageDTO from '../dtos/ICreateOrphanageDTO';
 
-// import AppError from '@shared/errors/AppError'; => to implement
+interface IRequest {
+  about: string;
+  images: Array<{ path: string }>;
+  instructions: string;
+  latitude: number;
+  longitude: number;
+  name: string;
+  open_on_weekends: boolean;
+  opening_hours: string;
+}
 
 @injectable()
 class CreateOrphanageService {
@@ -15,7 +22,7 @@ class CreateOrphanageService {
     private orphanagesRepository: IOrphanagesRepository,
   ) {}
 
-  public async execute(data: ICreateOrphanageDTO): Promise<Orphanage> {
+  public async execute(data: IRequest): Promise<Orphanage> {
     const schema = Yup.object().shape({
       name: Yup.string().required(),
       about: Yup.string().required().max(300),
