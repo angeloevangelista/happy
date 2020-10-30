@@ -1,0 +1,147 @@
+{
+	"info": {
+		"_postman_id": "75f63c52-5710-4585-9763-80ea431444da",
+		"name": "Orphanages",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "Lar das meninas",
+							"description": "-24.0213987",
+							"type": "text"
+						},
+						{
+							"key": "latitude",
+							"value": "-24.0213987",
+							"description": "-46.4751791",
+							"type": "text"
+						},
+						{
+							"key": "longitude",
+							"value": "-46.4751791",
+							"type": "text"
+						},
+						{
+							"key": "about",
+							"value": "Sobre o orfanato",
+							"type": "text"
+						},
+						{
+							"key": "instructions",
+							"value": "Venha visitar",
+							"type": "text"
+						},
+						{
+							"key": "opening_hours",
+							"value": "Das 8h até 18h",
+							"type": "text"
+						},
+						{
+							"key": "open_on_weekends",
+							"value": "true",
+							"type": "text"
+						},
+						{
+							"key": "images",
+							"type": "file",
+							"src": "/home/angelo/Desktop/lar-da-meninas-01.jpeg"
+						},
+						{
+							"key": "images",
+							"type": "file",
+							"src": "/home/angelo/Desktop/lar-da-meninas-02.jpeg"
+						}
+					],
+					"options": {
+						"formdata": {}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3333/orphanages",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3333",
+					"path": [
+						"orphanages"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Index",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Lar das meninas\",\n    \"latitude\": -24.0083252,\n    \"longitude\": -46.5066452,\n    \"about\": \"Sobre o orfanato\",\n    \"instructions\": \"Venha visitar\",\n    \"opening_hours\": \"Das 8h até 18h\",\n    \"open_on_weekends\": true\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3333/orphanages",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3333",
+					"path": [
+						"orphanages"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Show",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Lar das meninas\",\n    \"latitude\": -24.0083252,\n    \"longitude\": -46.5066452,\n    \"about\": \"Sobre o orfanato\",\n    \"instructions\": \"Venha visitar\",\n    \"opening_hours\": \"Das 8h até 18h\",\n    \"open_on_weekends\": true\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3333/orphanages/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3333",
+					"path": [
+						"orphanages",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
