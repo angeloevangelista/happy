@@ -7,8 +7,8 @@ import 'express-async-errors';
 import '@shared/infra/typeorm';
 import '@shared/container';
 
-import routes from './routes';
 import errorHandler from '@shared/errors/handler';
+import routes from './routes';
 
 const app = express();
 

@@ -1,7 +1,7 @@
 import User from '../../typeorm/entities/User';
 
-interface IUserView {
-  id: string;
+export interface IUserView {
+  id: number;
   name: string;
   email: string;
 }
