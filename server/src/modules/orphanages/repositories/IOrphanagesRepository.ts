@@ -1,5 +1,19 @@
+import User from '@modules/users/infra/typeorm/entities/User';
 import Orphanage from '@modules/orphanages/infra/typeorm/entities/Orphanage';
-import ICreateOrphanageDTO from '../dtos/ICreateOrphanageDTO';
+
+interface ICreateOrphanageData {
+  user: User;
+  name: string;
+  about: string;
+  latitude: number;
+  longitude: number;
+  instructions: string;
+  opening_hours: string;
+  open_on_weekends: boolean;
+  images: {
+    path: string;
+  }[];
+}
 
 interface IFindOptions {
   relations?: string[];
@@ -8,7 +22,7 @@ interface IFindOptions {
 interface IOrphanagesRepository {
   findById(id: number): Promise<Orphanage | undefined>;
   find(): Promise<Orphanage[]>;
-  create(data: ICreateOrphanageDTO): Promise<Orphanage>;
+  create(data: ICreateOrphanageData): Promise<Orphanage>;
 }
 
 export { IFindOptions, IOrphanagesRepository };

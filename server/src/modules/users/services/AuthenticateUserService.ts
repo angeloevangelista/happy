@@ -3,7 +3,7 @@ import jwt from 'jsonwebtoken';
 import { inject, injectable } from 'tsyringe';
 import * as Yup from 'yup';
 
-import authConfig from '@config/jwt';
+import authConfig from '@config/auth';
 import AppError from '@shared/errors/AppError';
 import IUsersRepository from '../repositories/IUsersRepository';
 import User from '../infra/typeorm/entities/User';

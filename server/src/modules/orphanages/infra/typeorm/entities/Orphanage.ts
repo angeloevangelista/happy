@@ -1,8 +1,10 @@
+import User from '@modules/users/infra/typeorm/entities/User';
 import {
   Column,
   Entity,
   JoinColumn,
   OneToMany,
+  OneToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import Image from './Image';
@@ -32,6 +34,10 @@ class Orphanage {
 
   @Column()
   open_on_weekends: boolean;
+
+  @OneToOne(() => User, (user) => user.orphanages)
+  @JoinColumn({ name: 'user_id' })
+  user: User;
 
   @OneToMany(() => Image, (image) => image.orphanage, {
     cascade: ['insert', 'update'],

@@ -9,7 +9,7 @@ import ListOrphanagesService from '@modules/orphanages/services/ListOrphanagesSe
 import CreateOrphanageService from '@modules/orphanages/services/CreateOrphanageService';
 
 class OrphanagesController {
-  public async show(request: Request, response: Response) {
+  public async show(request: Request, response: Response): Promise<Response> {
     const { id } = request.params;
 
     const findOrphanage = container.resolve(FindOrphanageService);
@@ -25,7 +25,7 @@ class OrphanagesController {
     return response.json(orphanages_view.render(orphanage));
   }
 
-  public async index(request: Request, response: Response) {
+  public async index(request: Request, response: Response): Promise<Response> {
     const listOrphanages = container.resolve(ListOrphanagesService);
 
     const orphanages = await listOrphanages.execute();
@@ -33,7 +33,7 @@ class OrphanagesController {
     return response.json(orphanages_view.renderMany(orphanages));
   }
 
-  public async create(request: Request, response: Response) {
+  public async create(request: Request, response: Response): Promise<Response> {
     const {
       name,
       about,
@@ -59,13 +59,14 @@ class OrphanagesController {
       opening_hours,
       open_on_weekends: open_on_weekends === 'true',
       images,
+      user_id: request.user.id,
     };
 
     const createOrphanage = container.resolve(CreateOrphanageService);
 
     const orphanage = await createOrphanage.execute(data);
 
-    return response.status(201).json(orphanage);
+    return response.status(201).json(orphanages_view.render(orphanage));
   }
 }
 

@@ -1,4 +1,5 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import Orphanage from '@modules/orphanages/infra/typeorm/entities/Orphanage';
+import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
 
 @Entity('users')
 class User {
@@ -13,6 +14,9 @@ class User {
 
   @Column()
   password: string;
+
+  @OneToMany(() => Orphanage, (orphanage) => orphanage.user)
+  orphanages: Orphanage[];
 }
 
 export default User;
