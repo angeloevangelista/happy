@@ -11,7 +11,7 @@ class FindOrphanageService {
   ) {}
 
   public async execute(id: number): Promise<Orphanage | undefined> {
-    const orphanage = this.orphanagesRepository.findById(id);
+    const orphanage = await this.orphanagesRepository.findById(id);
 
     return orphanage;
   }

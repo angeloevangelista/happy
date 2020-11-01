@@ -1,5 +1,7 @@
+import User from '@modules/users/infra/typeorm/entities/User';
+
 export default interface ICreateOrphanageDTO {
-  user_id: number;
+  user: User;
   name: string;
   about: string;
   latitude: number;

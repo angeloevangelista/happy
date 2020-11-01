@@ -10,6 +10,9 @@ const getUsersSeeds = async (): TGetUsersSeedsResponse => {
       name: 'Angelo',
       email: 'angeloevan.ane@gmail.com',
       password: await bcrypt.hash('123456', 8),
+      created_at: new Date(),
+      updated_at: new Date(),
+      orphanages: [],
     },
   ];
 

@@ -21,6 +21,7 @@ interface IFindOptions {
 
 interface IOrphanagesRepository {
   findById(id: number): Promise<Orphanage | undefined>;
+  findByUser(user_id: number): Promise<Orphanage[]>;
   find(): Promise<Orphanage[]>;
   create(data: ICreateOrphanageData): Promise<Orphanage>;
 }

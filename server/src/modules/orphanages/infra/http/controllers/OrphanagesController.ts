@@ -50,7 +50,9 @@ class OrphanagesController {
       path: image.filename,
     }));
 
-    const data: ICreateOrphanageDTO = {
+    const createOrphanage = container.resolve(CreateOrphanageService);
+
+    const orphanage = await createOrphanage.execute({
       name,
       about,
       latitude,
@@ -60,11 +62,7 @@ class OrphanagesController {
       open_on_weekends: open_on_weekends === 'true',
       images,
       user_id: request.user.id,
-    };
-
-    const createOrphanage = container.resolve(CreateOrphanageService);
-
-    const orphanage = await createOrphanage.execute(data);
+    });
 
     return response.status(201).json(orphanages_view.render(orphanage));
   }

@@ -3,6 +3,8 @@ import Image from '@modules/orphanages/infra/typeorm/entities/Image';
 export interface IImageView {
   id: number;
   url: string;
+  created_at: Date;
+  updated_at: Date;
 }
 
 export default {
@@ -10,6 +12,8 @@ export default {
     return {
       id: image.id,
       url: `${process.env.APP_URL}/uploads/${image.path}`,
+      created_at: image.created_at,
+      updated_at: image.updated_at,
     };
   },
 

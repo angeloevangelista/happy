@@ -16,6 +16,8 @@ interface IOrphanageView {
   instructions: string;
   open_on_weekends: boolean;
   opening_hours: string;
+  created_at: Date;
+  updated_at: Date;
   images: IImageView[];
   user: IUserView;
 }
@@ -31,6 +33,8 @@ export default {
       instructions: orphanage.instructions,
       open_on_weekends: orphanage.open_on_weekends,
       opening_hours: orphanage.opening_hours,
+      created_at: orphanage.created_at,
+      updated_at: orphanage.updated_at,
       images: images_view.renderMany(orphanage.images),
       user: users_view.render(orphanage.user),
     };

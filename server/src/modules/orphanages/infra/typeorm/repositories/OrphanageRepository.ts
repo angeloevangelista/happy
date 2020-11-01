@@ -11,6 +11,17 @@ class OrphanagesRepository implements IOrphanagesRepository {
     this.ormRepository = getRepository(Orphanage);
   }
 
+  async findByUser(user_id: number): Promise<Orphanage[]> {
+    const orphanages = await this.ormRepository.find({
+      where: {
+        user_id,
+      },
+      relations: ['user', 'images'],
+    });
+
+    return orphanages;
+  }
+
   public async findById(id: number): Promise<Orphanage | undefined> {
     const orphanage = await this.ormRepository.findOne(id, {
       relations: ['images'],

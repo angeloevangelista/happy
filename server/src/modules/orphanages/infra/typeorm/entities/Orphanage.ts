@@ -1,11 +1,13 @@
 import User from '@modules/users/infra/typeorm/entities/User';
 import {
   Column,
+  CreateDateColumn,
   Entity,
   JoinColumn,
   OneToMany,
   OneToOne,
   PrimaryGeneratedColumn,
+  UpdateDateColumn,
 } from 'typeorm';
 import Image from './Image';
 
@@ -13,6 +15,9 @@ import Image from './Image';
 class Orphanage {
   @PrimaryGeneratedColumn('increment')
   id: number;
+
+  @Column()
+  user_id: number;
 
   @Column()
   name: string;
@@ -34,6 +39,12 @@ class Orphanage {
 
   @Column()
   open_on_weekends: boolean;
+
+  @CreateDateColumn()
+  created_at: Date;
+
+  @UpdateDateColumn()
+  updated_at: Date;
 
   @OneToOne(() => User, (user) => user.orphanages)
   @JoinColumn({ name: 'user_id' })

@@ -5,7 +5,18 @@ import Orphanage from '@modules/orphanages/infra/typeorm/entities/Orphanage';
 import IUsersRepository from '@modules/users/repositories/IUsersRepository';
 import AppError from '@shared/errors/AppError';
 import IOrphanagesRepository from '../repositories/IOrphanagesRepository';
-import ICreateOrphanageDTO from '../dtos/ICreateOrphanageDTO';
+
+interface IRequest {
+  user_id: number;
+  name: string;
+  about: string;
+  latitude: number;
+  longitude: number;
+  instructions: string;
+  opening_hours: string;
+  open_on_weekends: boolean;
+  images: Array<{ path: string }>;
+}
 
 @injectable()
 class CreateOrphanageService {
@@ -16,7 +27,7 @@ class CreateOrphanageService {
     private usersRepository: IUsersRepository,
   ) {}
 
-  public async execute(data: ICreateOrphanageDTO): Promise<Orphanage> {
+  public async execute(data: IRequest): Promise<Orphanage> {
     const schema = Yup.object().shape({
       user_id: Yup.number().required('User_id is required'),
       name: Yup.string().required('Name is required'),
